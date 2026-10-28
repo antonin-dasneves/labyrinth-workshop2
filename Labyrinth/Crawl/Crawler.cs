@@ -29,8 +29,8 @@ namespace Labyrinth.Crawl
 
         public Tile CalcFacingTile(Labyrinth labyrinth)
         {
-            return X + Direction.DeltaX < labyrinth.Width 
-                    && Y + Direction.DeltaY < labyrinth.Height 
+            return X + Direction.DeltaX <= labyrinth.Width 
+                    && Y + Direction.DeltaY <= labyrinth.Height 
                     && X + Direction.DeltaX >= 0 
                     && Y + Direction.DeltaY >= 0 ?
              labyrinth.getTile(X + Direction.DeltaX, Y + Direction.DeltaY) : Outside.Singleton;
