@@ -24,6 +24,8 @@ namespace Labyrinth
             {
                 throw new ArgumentException("Labyrinth must have at least one starting position marked with x");
             }
+            Width = _tiles.GetLength(1);
+            Height = _tiles.GetLength(0);
         }
 
         /// <summary>
@@ -65,7 +67,11 @@ namespace Labyrinth
 
         public ICrawler NewCrawler()
         {
-            Tile facingTile = _tiles[_startPosition.Item1, _startPosition.Item2 + Direction.North.DeltaY];
+            Tile facingTile =   _startPosition.Item1 < Width 
+                            && _startPosition.Item2 + Direction.North.DeltaY < Height 
+                            && _startPosition.Item1 >= 0 
+                            && _startPosition.Item2 + Direction.North.DeltaY >= 0 ?
+             _tiles[_startPosition.Item1, _startPosition.Item2 + Direction.North.DeltaY] : Outside.Singleton;
             return new Crawler(_startPosition, facingTile);
         }
 
