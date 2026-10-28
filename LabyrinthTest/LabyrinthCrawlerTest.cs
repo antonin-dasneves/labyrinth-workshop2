@@ -45,7 +45,18 @@ public class LabyrinthCrawlerTest
     [Test]
     public void InitWithNoXThrowsArgumentException()
     {
-        Assert.That(false);
+        try {
+            var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                    +--+
+                    |  |
+                    +--+
+                """));
+            Assert.Fail();
+        } catch (ArgumentException exception) {
+            Assert.That(exception.Message, Is.EqualTo("Labyrinth must have at least one starting position marked with x"));
+        } catch (AssertionException) {
+            Assert.Fail();
+        }
     }
     #endregion
 
