@@ -14,7 +14,7 @@ namespace Labyrinth.Crawl
 
         public Direction Direction { get; }
 
-        public Tile FacingTile { get; }
+        public Tile FacingTile { get; set; }
 
         public Labyrinth Labyrinth;
 
@@ -29,7 +29,7 @@ namespace Labyrinth.Crawl
 
         public Tile calcFacingTile(Labyrinth labyrinth)
         {
-            return  X + Direction.DeltaX < labyrinth.Width 
+            return X + Direction.DeltaX < labyrinth.Width 
                     && Y + Direction.DeltaY < labyrinth.Height 
                     && X + Direction.DeltaX >= 0 
                     && Y + Direction.DeltaY >= 0 ?
