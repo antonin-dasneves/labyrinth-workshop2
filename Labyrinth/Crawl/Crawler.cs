@@ -42,6 +42,12 @@ namespace Labyrinth.Crawl
             FacingTile = CalcFacingTile(Labyrinth);
         }
 
+        public void TurnRight()
+        {
+            Direction.TurnRight();
+            FacingTile = CalcFacingTile(Labyrinth);
+        }
+
         public Inventory Walk()
         {
             return null;
