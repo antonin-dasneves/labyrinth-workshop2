@@ -63,7 +63,11 @@ namespace Labyrinth
             return res.ToString();
         }
 
-        public ICrawler NewCrawler() => throw new NotImplementedException("To be implemented");
+        public ICrawler NewCrawler()
+        {
+            Tile facingTile = _tiles[_startPosition.Item1, _startPosition.Item2 + Direction.North.DeltaY];
+            return new Crawler(_startPosition, facingTile);
+        }
 
         private readonly Tile[,] _tiles;
         private (int, int) _startPosition;
