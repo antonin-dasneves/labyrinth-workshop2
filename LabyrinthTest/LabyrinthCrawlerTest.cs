@@ -29,7 +29,17 @@ public class LabyrinthCrawlerTest
     [Test]
     public void InitWithMultipleXUsesLastOne()
     {
-        Assert.That(false);
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                +--+
+                |xx|
+                +--+
+                """));
+        var test = laby.NewCrawler();
+
+        using var all = Assert.EnterMultipleScope();
+
+        Assert.That(test.X, Is.EqualTo(2));
+        Assert.That(test.Y, Is.EqualTo(1));
     }
 
     [Test]
