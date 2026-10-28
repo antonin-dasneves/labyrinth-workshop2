@@ -76,7 +76,7 @@ public class LabyrinthCrawlerTest
                 +--+
                 """));
         var test = laby.NewCrawler();
-        test.Direction.TurnLeft();
+        ((Crawler)test).TurnLeft();
 
         Assert.That(test.FacingTile, Is.EqualTo(Outside.Singleton));
     }
