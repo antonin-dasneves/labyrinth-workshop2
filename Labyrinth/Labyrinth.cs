@@ -67,12 +67,12 @@ namespace Labyrinth
 
         public ICrawler NewCrawler()
         {
-            Tile facingTile =   _startPosition.Item1 < Width 
-                            && _startPosition.Item2 + Direction.North.DeltaY < Height 
-                            && _startPosition.Item1 >= 0 
-                            && _startPosition.Item2 + Direction.North.DeltaY >= 0 ?
-             _tiles[_startPosition.Item1, _startPosition.Item2 + Direction.North.DeltaY] : Outside.Singleton;
-            return new Crawler(_startPosition, facingTile);
+            return new Crawler(_startPosition, Direction.North, this);
+        }
+
+        public Tile getTile(int x, int y)
+        {
+            return _tiles[x, y];
         }
 
         private readonly Tile[,] _tiles;

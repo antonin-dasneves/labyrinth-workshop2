@@ -8,38 +8,34 @@ namespace Labyrinth.Crawl
     /// </summary>
     public class Crawler:  ICrawler
     {
-        /// <summary>
-        /// Gets the current X position.
-        /// </summary>
         public int X { get; }
 
-        /// <summary>
-        /// Gets the current Y position.
-        /// </summary>
         public int Y { get; }
 
-        /// <summary>
-        /// Gets the current direction.
-        /// </summary>
         public Direction Direction { get; }
 
-        /// <summary>
-        /// Gets the tile in front of the crawler.
-        /// </summary>
         public Tile FacingTile { get; }
 
-        public Crawler((int, int) StartingPosition, Tile facingTile)
+        public Labyrinth Labyrinth;
+
+        public Crawler((int, int) StartingPosition, Direction direction, Labyrinth labyrinth)
         {
             X = StartingPosition.Item1;
             Y = StartingPosition.Item2;
-            Direction = Direction.North;
-            FacingTile = facingTile;
+            Direction = direction;
+            Labyrinth = labyrinth;
+            FacingTile = calcFacingTile(Labyrinth);
         }
 
-        /// <summary>
-        /// Pass the tile in front of the crawler and move into it.
-        /// </summary>
-        /// <returns>An inventory of the collectable items in the place reached.</returns>
+        public Tile calcFacingTile(Labyrinth labyrinth)
+        {
+            return  X + Direction.DeltaX < labyrinth.Width 
+                    && Y + Direction.DeltaY < labyrinth.Height 
+                    && X + Direction.DeltaX >= 0 
+                    && Y + Direction.DeltaY >= 0 ?
+             labyrinth.getTile(X + Direction.DeltaX, Y + Direction.DeltaY) : Outside.Singleton;
+        }
+
         public Inventory Walk()
         {
             return null;
