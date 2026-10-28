@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Labyrinth/Labyrinth.csproj" />
+  <Project Path="LabyrinthTest/LabyrinthTest.csproj" Id="8112e765-5264-464e-9f9e-639f2baca768" />
+</Solution>
