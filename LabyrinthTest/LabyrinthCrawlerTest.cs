@@ -57,7 +57,14 @@ public class LabyrinthCrawlerTest
     [Test]
     public void FacingNorthOnUpperTileReturnsOutside()
     {
-        Assert.That(false);
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                +-x+
+                |  |
+                +--+
+                """));
+        var test = laby.NewCrawler();
+
+        Assert.That(test.FacingTile, Is.EqualTo(Outside.Singleton));
     }
 
     [Test]
