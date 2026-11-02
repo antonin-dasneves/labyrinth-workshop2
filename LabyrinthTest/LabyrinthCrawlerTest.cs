@@ -215,7 +215,7 @@ public class LabyrinthCrawlerTest
                 """));
         
         var test = laby.NewCrawler();
-        
+
         ((Crawler)test).TurnRight();
         ((Crawler)test).Walk();
         
@@ -235,11 +235,11 @@ public class LabyrinthCrawlerTest
                 """));
         var test = laby.NewCrawler();
 
-        test.Direction.TurnRight();
+        ((Crawler)test).TurnRight();
 
         var inventory = test.Walk();
 
-        test.Direction.TurnRight();
+        ((Crawler)test).TurnRight();
         ((Door)test.FacingTile).Open(inventory);
 
         test.Walk();
