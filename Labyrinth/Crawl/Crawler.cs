@@ -8,9 +8,9 @@ namespace Labyrinth.Crawl
     /// </summary>
     public class Crawler:  ICrawler
     {
-        public int X { get; }
+        public int X { get; set; }
 
-        public int Y { get; }
+        public int Y { get; set; }
 
         public Direction Direction { get; }
 
@@ -56,7 +56,11 @@ namespace Labyrinth.Crawl
 
         public Inventory Walk()
         {
-            return null;
+            X += Direction.DeltaX;
+            Y += Direction.DeltaY;
+            Inventory inventory = FacingTile.Pass();
+            FacingTile = CalcFacingTile();
+            return inventory;
         }
     }
 }
