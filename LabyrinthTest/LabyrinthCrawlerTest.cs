@@ -98,7 +98,16 @@ public class LabyrinthCrawlerTest
     [Test]
     public void FacingSouthOnBottomTileReturnsOutside()
     {
-        Assert.That(false);
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                +--+
+                |  |
+                +x-+
+                """));
+        var test = laby.NewCrawler();
+        ((Crawler)test).TurnRight();
+        ((Crawler)test).TurnRight();
+
+        Assert.That(test.FacingTile, Is.EqualTo(Outside.Singleton));
     }
     #endregion
 
