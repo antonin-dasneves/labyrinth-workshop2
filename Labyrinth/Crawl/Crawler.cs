@@ -24,28 +24,35 @@ namespace Labyrinth.Crawl
             Y = StartingPosition.Item2;
             Direction = direction;
             Labyrinth = labyrinth;
-            FacingTile = CalcFacingTile(Labyrinth);
+            FacingTile = CalcFacingTile();
         }
 
-        public Tile CalcFacingTile(Labyrinth labyrinth)
+        public Tile CalcFacingTile()
         {
-            return X + Direction.DeltaX <= labyrinth.Width 
-                    && Y + Direction.DeltaY <= labyrinth.Height 
-                    && X + Direction.DeltaX >= 0 
-                    && Y + Direction.DeltaY >= 0 ?
-             labyrinth.getTile(X + Direction.DeltaX, Y + Direction.DeltaY) : Outside.Singleton;
+            Console.WriteLine($"X: {X + Direction.DeltaX}, Y: {Y + Direction.DeltaY}, Labyrinth Width: {Labyrinth.Width}, Labyrinth Height: {Labyrinth.Height}");
+            if (X + Direction.DeltaX >= Labyrinth.Width 
+                || Y + Direction.DeltaY >= Labyrinth.Height 
+                || X + Direction.DeltaX < 0 
+                || Y + Direction.DeltaY < 0)
+            {
+                return Outside.Singleton;
+            }
+            else
+            {
+                return Labyrinth.getTile(X + Direction.DeltaX, Y + Direction.DeltaY);
+            }
         }
 
         public void TurnLeft()
         {
             Direction.TurnLeft();
-            FacingTile = CalcFacingTile(Labyrinth);
+            FacingTile = CalcFacingTile();
         }
 
         public void TurnRight()
         {
             Direction.TurnRight();
-            FacingTile = CalcFacingTile(Labyrinth);
+            FacingTile = CalcFacingTile();
         }
 
         public Inventory Walk()

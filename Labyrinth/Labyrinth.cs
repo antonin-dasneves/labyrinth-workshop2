@@ -24,8 +24,8 @@ namespace Labyrinth
             {
                 throw new ArgumentException("Labyrinth must have at least one starting position marked with x");
             }
-            Width = _tiles.GetLength(1);
-            Height = _tiles.GetLength(0);
+            Width = _tiles.GetLength(0);
+            Height = _tiles.GetLength(1);
         }
 
         /// <summary>
