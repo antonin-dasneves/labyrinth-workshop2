@@ -29,7 +29,6 @@ namespace Labyrinth.Crawl
 
         public Tile CalcFacingTile()
         {
-            Console.WriteLine($"X: {X + Direction.DeltaX}, Y: {Y + Direction.DeltaY}, Labyrinth Width: {Labyrinth.Width}, Labyrinth Height: {Labyrinth.Height}");
             if (X + Direction.DeltaX >= Labyrinth.Width 
                 || Y + Direction.DeltaY >= Labyrinth.Height 
                 || X + Direction.DeltaX < 0 
