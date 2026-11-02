@@ -190,7 +190,17 @@ public class LabyrinthCrawlerTest
     [Test]
     public void WalkInARoomWithAnItem()
     {
-        Assert.That(false);
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                +--+
+                |k/|
+                |x |
+                +--+
+                """));
+        
+        var test = laby.NewCrawler();
+        var inventory = test.Walk();
+        
+        Assert.That(((Crawler)test).Inventory, Is.Not.Null);
     }
 
     [Test]

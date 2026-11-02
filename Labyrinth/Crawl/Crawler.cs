@@ -16,6 +16,8 @@ namespace Labyrinth.Crawl
 
         public Tile FacingTile { get; set; }
 
+        public Inventory Inventory { get; set; } = null;
+
         public Labyrinth Labyrinth;
 
         public Crawler((int, int) StartingPosition, Direction direction, Labyrinth labyrinth)
@@ -59,6 +61,10 @@ namespace Labyrinth.Crawl
             X += Direction.DeltaX;
             Y += Direction.DeltaY;
             Inventory inventory = FacingTile.Pass();
+            if (inventory != null)
+            {
+                Inventory = inventory;
+            }
             FacingTile = CalcFacingTile();
             return inventory;
         }
