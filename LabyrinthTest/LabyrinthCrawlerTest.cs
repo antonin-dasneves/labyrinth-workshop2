@@ -141,6 +141,8 @@ public class LabyrinthCrawlerTest
         var previousTile = test.FacingTile;
         var inventory = ((Crawler)test).Walk();
 
+        using var all = Assert.EnterMultipleScope();
+        
         Assert.That((test.X, test.Y), Is.Not.EqualTo(previousPosition));
         Assert.That(test.FacingTile, Is.Not.EqualTo(previousTile));
         Assert.That(inventory, Is.InstanceOf<Inventory>());
@@ -161,6 +163,8 @@ public class LabyrinthCrawlerTest
         ((Crawler)test).TurnRight();
         var inventory = ((Crawler)test).Walk();
 
+        using var all = Assert.EnterMultipleScope();
+        
         Assert.That((test.X, test.Y), Is.Not.EqualTo(previousPosition));
         Assert.That(test.FacingTile, Is.Not.EqualTo(previousTile));
         Assert.That(test.Direction, Is.EqualTo(Direction.East));
