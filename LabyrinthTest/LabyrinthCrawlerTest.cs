@@ -151,6 +151,7 @@ public class LabyrinthCrawlerTest
     {
         var laby = new Labyrinth.Labyrinth(new AsciiParser("""
                 +--+
+                |  |
                 |x |
                 +--+
                 """));
